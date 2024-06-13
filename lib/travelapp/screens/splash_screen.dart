@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:travelapp/travelapp/constants/constants.dart';
 import 'package:travelapp/travelapp/screens/login_screen.dart';
 
 class SplashScreen extends StatefulWidget {
