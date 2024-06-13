@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:travelapp/travelapp/booking/flight_search.dart';
+import 'package:travelapp/travelapp/bookingscreens/flight_search.dart';
 import 'package:travelapp/travelapp/constants/constants.dart';
 
 class FlightBookingScreen extends StatelessWidget {

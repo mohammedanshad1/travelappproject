@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:travelapp/travelapp/booking/train_searching.dart';
+import 'package:travelapp/travelapp/bookingscreens/train_searching.dart';
 import 'package:travelapp/travelapp/constants/constants.dart';
 
 class TrainBookingPage extends StatelessWidget {

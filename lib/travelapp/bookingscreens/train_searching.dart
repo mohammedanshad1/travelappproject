@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:travelapp/travelapp/booking/flight.dart';
-import 'package:travelapp/travelapp/booking/train.dart';
+import 'package:travelapp/travelapp/bookingscreens/flight.dart';
+import 'package:travelapp/travelapp/bookingscreens/train.dart';
 import 'package:travelapp/travelapp/constants/constants.dart';
 import 'package:travelapp/travelapp/screens/home_screen.dart';
 

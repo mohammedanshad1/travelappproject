@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:travelapp/travelapp/booking/bus_search.dart';
-import 'package:travelapp/travelapp/booking/flight_search.dart';
-import 'package:travelapp/travelapp/booking/train_searching.dart';
+import 'package:travelapp/travelapp/bookingscreens/bus_search.dart';
+import 'package:travelapp/travelapp/bookingscreens/flight_search.dart';
+import 'package:travelapp/travelapp/bookingscreens/train_searching.dart';
 import 'package:travelapp/travelapp/constants/constants.dart';
 import 'package:travelapp/travelapp/screens/agra.dart';
 import 'package:travelapp/travelapp/screens/amsterdam.dart';
