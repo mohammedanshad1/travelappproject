@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:travelapp/travelapp/bookingscreens/bus_search.dart';
 import 'package:travelapp/travelapp/bookingscreens/flight_search.dart';
+import 'package:travelapp/travelapp/bookingscreens/hotel_search.dart';
 import 'package:travelapp/travelapp/bookingscreens/train_searching.dart';
 import 'package:travelapp/travelapp/constants/constants.dart';
 import 'package:travelapp/travelapp/screens/agra.dart';
@@ -317,6 +318,12 @@ class HomeContent extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => BusSearchScreen()),
+          );
+        }
+        if (icon == Icons.restaurant) {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => HotelBookingScreen()),
           );
         }
       },

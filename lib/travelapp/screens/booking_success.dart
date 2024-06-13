@@ -3,6 +3,7 @@ import 'package:lottie/lottie.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:travelapp/travelapp/constants/constants.dart';
 import 'package:travelapp/travelapp/screens/home_screen.dart';
+import 'package:travelapp/travelapp/screens/paymentscreen.dart';
 
 class SuccessPage extends StatelessWidget {
   @override
@@ -57,7 +58,8 @@ class SuccessPage extends StatelessWidget {
                   width: 200,
                   child: Lottie.asset(
                     'assets/Animation - 1718186051189.json',
-                    repeat: false, // Disable looping if you only want to play it once
+                    repeat:
+                        false, // Disable looping if you only want to play it once
                   ),
                 ),
                 SizedBox(height: 20),
@@ -88,7 +90,7 @@ class SuccessPage extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => HomeScreen()),
+                    MaterialPageRoute(builder: (context) => PaymentPage()),
                   );
                 },
               ),
