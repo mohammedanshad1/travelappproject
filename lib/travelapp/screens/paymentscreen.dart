@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:travelapp/travelapp/constants/constants.dart';
+import 'package:travelapp/travelapp/screens/booking_success.dart';
 
 class PaymentPage extends StatefulWidget {
   @override
@@ -14,6 +15,9 @@ class _PaymentPageState extends State<PaymentPage> {
 
   @override
   Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Redcolor,
@@ -36,7 +40,7 @@ class _PaymentPageState extends State<PaymentPage> {
         ),
         centerTitle: true,
       ),
-      body: Padding(
+      body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
@@ -46,38 +50,43 @@ class _PaymentPageState extends State<PaymentPage> {
                 1, 'Paypal', 'assets/visa.png', '**** 5221', '5221 **** 2465'),
             _buildPaymentOption(2, 'Google Pay', 'assets/google-pay.png',
                 '**** 4142', '4142 **** 7667'),
-            SizedBox(height: 20),
+            SizedBox(height: screenHeight * 0.02),
             Row(
               children: [
                 Expanded(
-                    child: Container(
-                  height: 60,
-                  width: 70,
-                  decoration: BoxDecoration(
+                  child: Container(
+                    height: screenHeight * 0.09,
+                    decoration: BoxDecoration(
                       color: HexColor("D2AA40"),
-                      borderRadius: BorderRadius.circular(6)),
-                  child: TextField(
-                    decoration: InputDecoration(
+                      borderRadius: BorderRadius.circular(6),
+                    ),
+                    child: TextField(
+                      decoration: InputDecoration(
                         border: OutlineInputBorder(borderSide: BorderSide.none),
                         hintText: "Promo Code",
                         hintStyle: TextStyle(
-                            color: Iconcolor,
-                            fontFamily: "Sora",
-                            fontWeight: FontWeight.bold),
+                          color: Iconcolor,
+                          fontFamily: "Sora",
+                          fontWeight: FontWeight.bold,
+                        ),
                         prefixIcon: Icon(
                           Icons.book_online,
                           color: WhiteColor,
-                        )),
+                        ),
+                      ),
+                    ),
                   ),
-                )),
-                SizedBox(width: 10),
+                ),
+                SizedBox(width: screenWidth * 0.02),
                 ElevatedButton(
                   onPressed: () {
                     // Handle apply promo code
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Lightblue,
-                    padding: EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+                    padding: EdgeInsets.symmetric(
+                        horizontal: screenWidth * 0.05,
+                        vertical: screenHeight * 0.02),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
                     ),
@@ -89,28 +98,31 @@ class _PaymentPageState extends State<PaymentPage> {
                 ),
               ],
             ),
-            SizedBox(height: 20),
+            SizedBox(height: screenHeight * 0.02),
             _buildAmountDetails(
               'Transfer Amount',
               '\$30.20',
             ),
             SizedBox(
-              height: 20,
+              height: screenHeight * 0.02,
             ),
             _buildAmountDetails('Additional Cost', '\$0.50'),
             Divider(thickness: 1),
             SizedBox(
-              height: 20,
+              height: screenHeight * 0.02,
             ),
             _buildAmountDetails('Total', '\$30.70'),
-            Spacer(),
+            SizedBox(height: screenHeight * 0.19),
             ElevatedButton(
               onPressed: () {
-                // Handle payment
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SuccessPage()),
+                );
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Lightblue,
-                padding: EdgeInsets.symmetric(vertical: 16),
+                padding: EdgeInsets.symmetric(vertical: screenHeight * 0.02),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(30),
                 ),
@@ -119,10 +131,11 @@ class _PaymentPageState extends State<PaymentPage> {
               child: Text(
                 'Pay',
                 style: TextStyle(
-                    fontFamily: "Sora",
-                    color: BlackColordark,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold),
+                  fontFamily: "Sora",
+                  color: BlackColordark,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
           ],
@@ -182,14 +195,19 @@ class _PaymentPageState extends State<PaymentPage> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(title,
-              style: TextStyle(
-                  fontSize: 16,
-                  color: Iconcolor,
-                  fontFamily: "Sora",
-                  fontWeight: FontWeight.bold)),
-          Text(amount,
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+          Text(
+            title,
+            style: TextStyle(
+              fontSize: 16,
+              color: Iconcolor,
+              fontFamily: "Sora",
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          Text(
+            amount,
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+          ),
         ],
       ),
     );

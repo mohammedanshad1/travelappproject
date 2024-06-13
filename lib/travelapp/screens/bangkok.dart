@@ -19,94 +19,107 @@ class _BangkokState extends State<Bangkok> {
     var triplist = context.watch<TripProvider>().wishtrip;
     var trip = trips.isNotEmpty ? trips[0] : null; // Get the first trip or null
 
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
       body: trip == null
           ? Center(child: Text("No trip available"))
-          : Stack(
-              children: [
-                Hero(
-                  tag: 'Photo',
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.grey,
-                      borderRadius: BorderRadius.circular(20),
-                      image: DecorationImage(
-                        image: AssetImage("assets/bangkok.jpg"),
-                        fit: BoxFit.fill,
+          : SingleChildScrollView(
+              child: Column(
+                children: [
+                  Stack(
+                    children: [
+                      Hero(
+                        tag: 'Photo',
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: Colors.grey,
+                            borderRadius: BorderRadius.circular(20),
+                            image: DecorationImage(
+                              image: AssetImage("assets/bangkok.jpg"),
+                              fit: BoxFit.fill,
+                            ),
+                          ),
+                          height: screenHeight * 0.60,
+                          width: screenWidth,
+                        ),
+                      ),
+                      Positioned(
+                        top: 45,
+                        right: 16,
+                        child: IconButton(
+                          icon: Icon(
+                            triplist.contains(trip)
+                                ? Icons.favorite
+                                : Icons.favorite_border_outlined,
+                            color: triplist.contains(trip)
+                                ? Colors.red
+                                : Colors.white,
+                            size: 30,
+                          ),
+                          onPressed: () {
+                            if (!triplist.contains(trip)) {
+                              context.read<TripProvider>().addToList(trip);
+                            } else {
+                              context.read<TripProvider>().removeFromList(trip);
+                            }
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: screenHeight * 0.04),
+                  Container(
+                    padding:
+                        EdgeInsets.symmetric(horizontal: screenWidth * 0.05),
+                    child: const Text(
+                      "Bangkok, the vibrant capital of Thailand is bustling metropolis renowned for its ornate temples, bustling street markets, and dynamic nightlife. Home to iconic landmarks such as the Grand Palace, Wat Arun, and the floating markets.",
+                      style: TextStyle(
+                        fontFamily: "Sora",
+                        fontWeight: FontWeight.w500,
                       ),
                     ),
-                    height: 450,
-                    width: 400,
                   ),
-                ),
-                Positioned(
-                  top: 40,
-                  right: 20,
-                  child: IconButton(
-                    icon: Icon(
-                      triplist.contains(trip)
-                          ? Icons.favorite
-                          : Icons.favorite_border_outlined,
-                      color:
-                          triplist.contains(trip) ? Colors.red : Colors.white,
-                      size: 30,
-                    ),
-                    onPressed: () {
-                      if (!triplist.contains(trip)) {
-                        context.read<TripProvider>().addToList(trip);
-                      } else {
-                        context.read<TripProvider>().removeFromList(trip);
-                      }
-                    },
-                  ),
-                ),
-                Container(
-                  padding: const EdgeInsets.only(top: 470, left: 10),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  width: MediaQuery.of(context).size.width - 40,
-                  child: const Text(
-                    "Bangkok, the vibrant capital of Thailand is bustling metropolis renowned for its ornate temples, bustling street markets, and dynamic nightlife. Home to iconic landmarks such as the Grand Palace, Wat Arun, and the floating markets.",
-                    style: TextStyle(
-                      fontFamily: "Sora",
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 600, left: 10),
-                  child: const Row(
+                  SizedBox(height: screenHeight * 0.03),
+                  Row(
                     children: [
-                      Icon(Icons.punch_clock_sharp),
+                      SizedBox(width: screenWidth * 0.05),
+                      Icon(Icons.punch_clock_sharp, size: screenHeight * 0.03),
+                      SizedBox(width: screenWidth * 0.03),
                       Text(
                         "8am-12am",
-                        style: TextStyle(fontFamily: "Sora"),
-                      )
+                        style: TextStyle(
+                            fontFamily: "Sora",
+                            fontSize: screenHeight * 0.02,
+                            fontWeight: FontWeight.bold),
+                      ),
                     ],
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 630, left: 10),
-                  child: const Row(
+                  SizedBox(height: screenHeight * 0.01),
+                  Row(
                     children: [
-                      Icon(Icons.calendar_month),
+                      SizedBox(width: screenWidth * 0.05),
+                      Icon(Icons.calendar_month, size: screenHeight * 0.03),
+                      SizedBox(width: screenWidth * 0.03),
                       Text(
                         "Monday-Saturday",
-                        style: TextStyle(fontFamily: "Sora"),
-                      )
+                        style: TextStyle(
+                            fontFamily: "Sora",
+                            fontSize: screenHeight * 0.02,
+                            fontWeight: FontWeight.bold),
+                      ),
                     ],
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 670, left: 30),
-                  child: Container(
-                    height: 60,
-                    width: 290,
+                  SizedBox(height: screenHeight * 0.04),
+                  Container(
+                    height: screenHeight * 0.07,
+                    width: screenWidth * 0.9,
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         backgroundColor: HexColor("E0FAFB"),
-                        padding: EdgeInsets.symmetric(horizontal: 20),
+                        padding: EdgeInsets.symmetric(
+                            horizontal: screenWidth * 0.05),
                       ),
                       onPressed: () {
                         Navigator.push(
@@ -120,14 +133,15 @@ class _BangkokState extends State<Bangkok> {
                         style: TextStyle(
                           fontFamily: "Sora",
                           color: BlackColordark,
-                          fontSize: 20,
+                          fontSize: screenHeight * 0.025,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),
                   ),
-                )
-              ],
+                  SizedBox(height: screenHeight * 0.04),
+                ],
+              ),
             ),
     );
   }

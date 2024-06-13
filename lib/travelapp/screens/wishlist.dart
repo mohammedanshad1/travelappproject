@@ -47,7 +47,6 @@ class _WishListState extends State<WishList> {
           itemBuilder: (context, index) {
             final trip = wishlist[index];
             return Card(
-             
               elevation: 3,
               shadowColor: Redcolor,
               key: ValueKey(trip.image),

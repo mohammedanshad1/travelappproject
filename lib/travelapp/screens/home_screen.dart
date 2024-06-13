@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:travelapp/travelapp/booking/bus_search.dart';
+import 'package:travelapp/travelapp/booking/flight_search.dart';
+import 'package:travelapp/travelapp/booking/train_searching.dart';
 import 'package:travelapp/travelapp/constants/constants.dart';
 import 'package:travelapp/travelapp/screens/agra.dart';
 import 'package:travelapp/travelapp/screens/amsterdam.dart';
@@ -171,16 +174,14 @@ class HomeContent extends StatelessWidget {
         ),
 
         // Icons row
-        Container(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              buildIconContainer(Icons.flight),
-              buildIconContainer(Icons.car_rental_outlined),
-              buildIconContainer(Icons.bus_alert_rounded),
-              buildIconContainer(Icons.restaurant),
-            ],
-          ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            buildIconContainer(context, Icons.flight),
+            buildIconContainer(context, Icons.train),
+            buildIconContainer(context, Icons.bus_alert_rounded),
+            buildIconContainer(context, Icons.restaurant),
+          ],
         ),
 
         // Grid view
@@ -296,25 +297,49 @@ class HomeContent extends StatelessWidget {
     ));
   }
 
-  Widget buildIconContainer(IconData icon) {
-    return Container(
-      margin: EdgeInsets.all(15),
-      height: 55,
-      width: 50,
-      decoration: BoxDecoration(
-          color: Iconcolor, borderRadius: BorderRadius.circular(10)),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(
-            icon,
-            size: 30,
-          )
-        ],
+  Widget buildIconContainer(BuildContext context, IconData icon) {
+    return GestureDetector(
+      onTap: () {
+        if (icon == Icons.flight) {
+          // If the flight icon is tapped
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => FlightSearchScreen()),
+          );
+        }
+        if (icon == Icons.train) {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => TrainSearchScreen()),
+          );
+        }
+        if (icon == Icons.bus_alert_rounded) {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => BusSearchScreen()),
+          );
+        }
+      },
+      child: Container(
+        margin: EdgeInsets.all(15),
+        height: 55,
+        width: 50,
+        decoration: BoxDecoration(
+          color: Iconcolor,
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              icon,
+              size: 30,
+            )
+          ],
+        ),
       ),
     );
   }
-}
 
 // class FavoriteScreen extends StatelessWidget {
 //   @override
@@ -342,3 +367,4 @@ class HomeContent extends StatelessWidget {
 //     );
 //   }
 // }
+}

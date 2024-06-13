@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:travelapp/travelapp/screens/home_screen.dart';
+import 'package:travelapp/travelapp/constants/constants.dart';
 import 'package:travelapp/travelapp/screens/login_screen.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -18,9 +18,9 @@ class _SplashScreenState extends State<SplashScreen> {
           Padding(
             padding: const EdgeInsets.only(top: 90),
             child: Container(
-              height: 400,
+              height: 550,
               width: 400,
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage("assets/splash.jpg"),
                 ),

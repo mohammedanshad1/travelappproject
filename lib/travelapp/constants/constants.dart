@@ -4,6 +4,7 @@ import 'package:hexcolor/hexcolor.dart';
 // ignore: constant_identifier_names
 final Lightblue = HexColor("E0FAFB");
 final Iconcolor = HexColor("D9D9D9");
+final Lightcolor = HexColor("E8E6DA");
 
 const icon = Colors.white;
 const Redcolor = Colors.red;
